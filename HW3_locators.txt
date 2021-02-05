@@ -1,0 +1,28 @@
+Amazon Logo, search by CSS_SELECTOR, "i.a-icon.a-icon-logo"
+Amazon Logo, search by CSS_SELECTOR, "i.a-icon.a-icon-logo[aria-label='Amazon']"  #Super Secure
+Amazon Logo, search by XPATH, "//i[@class='a-icon a-icon-logo']"     #Extra practice
+Create Account label, search by CSS_SELECTOR, "h1.a-spacing-small"
+Create Account label, search by CSS_SELECTOR, "h1"       #Is it ok just to use this?
+Create Account label, search by XPATH, "//h1[@class='a-spacing-small']"       #Extra practice
+Create Account label, search by XPATH, "//h1"            #Is it okay just to use this in this case? It's the only h1 on the page so far
+Your Name input field, search by CSS_SELECTOR, "#ap_customer_name"       #ID
+Your Name input field, search by CSS_SELECTOR, "input[name='customerName']"      #Name
+Your Name input field, search by CSS_SELECTOR, "input.a-input-text.a-span12.auth-autofocus.auth-required-field.auth-contact-verification-request-info"    #Class
+Your Name input field, search by XPATH, "//input[@name='customerName']"    #Extra practice
+Email input field, search by CSS_SELECTOR, "input.a-input-text.a-span12.auth-required-field.auth-require-fields-match.auth-require-email-validaton.auth-require-reverify-on-change.auth-contact-verification-request-info"    #Is this considered ok length? looks a little bit too long
+Email input field, search by CSS_SELECTOR, "input.a-input-text.a-span12.auth-required-field.auth-require-fields-match.auth-require-email-validaton"    # shorter version
+Password input field, search by CSS_SELECTOR, "input[tabindex='5']"    #Shortest, without ID
+Password input field, search by CSS_SELECTOR, "div.auth-require-fields-match-group input[tabindex='5']"   #More safe
+Password input field, search by CSS_SELECTOR, "input[type='password'][name='password']"   #Safe and not too long
+Password must be at least 6 characters alert, search by CSS_SELECTOR, "div.auth-inlined-information-message div.a-alert-content"
+Re-enter password input field, search by CSS_SELECTOR, "input[tabindex='6']" #Again shortest
+Re-enter password input field, search by CSS_SELECTOR, "div.auth-require-fields-match-group input[tabindex='6']" #More secure
+Re-enter password input field, search by CSS_SELECTOR, "input[type='password'][name='passwordCheck']" #Safe enough but not too long
+Create your Amazon account button, search by CSS_SELECTOR, "input.a-button-input"
+Conditions of use link in the create account tab, search by CSS_SELECTOR, "a[href*='ap_register_notification_condition_of_use']"
+Privacy notice link in the create account tab, search by CSS_SELECTOR, "a[href*='ap_register_notification_privacy_notice']"
+Sign-in link, search by CSS_SELECTOR, "a.a-link-emphasis"    #Good enough, but just in case see the next line
+Sign-in link, search by CSS_SELECTOR, "a[href*='signin']"    #Another option, I wonder which one is best?
+Conditions of use link in the footer, search by CSS_SELECTOR, "a[href*='ap_desktop_footer_cou']"
+Privacy notice link in the footer, search by CSS_SELECTOR, "a[href*='ap_desktop_footer_privacy_notice']"
+Help link in the footer, search by CSS_SELECTOR, "a[href*='help']" #This one has a weird feeling just like (password must be at least 6 characters)
