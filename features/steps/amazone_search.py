@@ -1,8 +1,9 @@
 from selenium.webdriver.common.by import By
 from behave import given, when, then
+from selenium.webdriver.common.keys import Keys
 
 
-SERCH_FIELD = (By.ID, 'twotabsearchtextbox')
+SEARCH_FIELD = (By.ID, 'twotabsearchtextbox')
 SEARCH_ICON = (By.ID, 'nav-search-submit-button')
 RESULT = (By.XPATH, "//span[@class='a-color-state a-text-bold']")
 
@@ -29,5 +30,10 @@ def product_results_are_shown(context, search_query):
 @then('Page URL address contains word {query}')
 def verify_url_contains_query(context, query):
    assert query in context.driver.current_url, f'{query} not in {context.driver.current_url}'
+
+
+@when('Search for {search_word}')
+def input_search(context, search_word):
+    context.driver.find_element(*SERCH_FIELD).send_keys(search_word, Keys.ENTER)
 
 

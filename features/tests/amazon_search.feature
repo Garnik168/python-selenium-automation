@@ -19,3 +19,22 @@ Feature: Amazon Search Test
 #    And Click on Amazon search icon
 #    Then Product results for "Compass" are shown on Amazon
 #    And Page URL address contains word Compass
+
+  Scenario: User can add a product to the cart without any additional selections
+    Given Open Amazon page
+    When Search for coffee mug
+    And Click on the first product
+    And Click on Add to Cart button (Lana's version)
+    Then Verify cart has 1 item
+
+# # #
+# Separated them with additional info in the Scenario name for separate running
+# # #
+
+  Scenario: User can add a product to the cart with additional selections (SIZE)
+    Given Open Amazon page
+    When Search for shoes
+    And Click on the first product
+    And Select item's size
+    And Click on Add to Cart button (Lana's version)
+    Then Verify cart has 1 item
