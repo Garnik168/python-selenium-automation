@@ -12,7 +12,6 @@ def open_amazon_best_sellers_page(context):
 
 @then('Verify {links_count} Best Sellers links are present')
 def verify_best_sellers_links(context, links_count):
-    context.driver.find_elements(*BEST_SELLER_5_LINKS)
     expected = int(links_count)
     actual = len(context.driver.find_elements(*BEST_SELLER_5_LINKS))
     assert actual == expected, f'Expected {expected} links, got {actual} instead'

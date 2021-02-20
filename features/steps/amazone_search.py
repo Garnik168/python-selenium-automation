@@ -10,7 +10,7 @@ RESULT = (By.XPATH, "//span[@class='a-color-state a-text-bold']")
 
 @when('Input {search_query} into Amazon search field')
 def input_amazon_search(context, search_query):
-    search_field = context.driver.find_element(*SERCH_FIELD)
+    search_field = context.driver.find_element(*SEARCH_FIELD)
     search_field.send_keys(search_query)
 
 
@@ -34,6 +34,6 @@ def verify_url_contains_query(context, query):
 
 @when('Search for {search_word}')
 def input_search(context, search_word):
-    context.driver.find_element(*SERCH_FIELD).send_keys(search_word, Keys.ENTER)
+    context.driver.find_element(*SEARCH_FIELD).send_keys(search_word, Keys.ENTER)
 
 
