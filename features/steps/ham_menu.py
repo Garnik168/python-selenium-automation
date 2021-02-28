@@ -9,6 +9,8 @@ HAM_MENU = (By.ID, 'nav-hamburger-menu')
 @then('Verify hamburger menu icon is visible')
 def verify_ham_menu_present(context):
     context.driver.find_element(*HAM_MENU)
+    # context.driver.refresh()          # refreshing the page
+    # context.driver.find_element(*HAM_MENU)    # making sure that Stale Element exception is avoided
 
     # print('FIND ELEMENT')
     # element = context.driver.find_element(*HAM_MENU)
