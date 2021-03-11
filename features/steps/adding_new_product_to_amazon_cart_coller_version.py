@@ -3,46 +3,48 @@ from behave import given, when, then
 from time import sleep
 from selenium.webdriver.common.keys import Keys
 
-
-SEARCH_FIELD = (By.ID, 'twotabsearchtextbox')
-FIRST_UNSPONSORED_RESULT = (By.CSS_SELECTOR, ".s-result-item:not(.AdHolder) a .a-price")
-NO_THANKS_BTN = (By.ID, 'attachSiNoCoverage-announce')
-ALERT = (By.CSS_SELECTOR, "#attachDisplayAddBaseAlert h4")
-CART_BTN_POP_UP_SCREEN = (By.ID, 'attach-sidesheet-view-cart-button')
-DELETE_BTN_FOR_ITEM = (By.CSS_SELECTOR, "[data-action='delete'] .a-declarative")
+# I took a liberty of removing all the locators since they are in the Page object files, is that ok?
 
 
 @when('Input {search_query} into Amazon search field and hit ENTER')
 def input_query_and_hit_enter(context, search_query):
-    context.driver.find_element(*SEARCH_FIELD).send_keys(search_query, Keys.ENTER)
+    context.app.main_page.input_query_and_hit_enter(search_query)
 
 
 @when('Click on the first unsponsored result')
 def click_on_first_unsponsored_result(context):
-    context.driver.find_element(*FIRST_UNSPONSORED_RESULT).click()
+    context.app.search_results_page.click_on_first_unsponsored_result()
+
+
+@when('Click on Add to Cart button')
+def click_add_to_cart(context):
+    context.app.product_page.click_add_to_cart()
 
 
 @when('Choose No Thanks option for Add ons')
 def no_thanks_add_on_option(context):
-    context.driver.find_element(*NO_THANKS_BTN).click()
-    sleep(2)    # I hope I'll learn a better solution to this
+    context.app.product_page.no_thanks_add_on_option()
+    # sleep(1)    # new locator fixes the issue no need for sleep, YAY!
 
 
-@then('Verify that alert Added to Cart is present')
-def verify_add_to_cart_alert(context):
-    expected = 'Added to Cart'
-    actual = context.driver.find_element(*ALERT).text
-    assert expected == actual, f'Expected {expected}, but got {actual} instead'
+@then('Verify that alert {text} is present')
+def verify_add_to_cart_alert(context, text):
+    context.app.product_page.verify_add_to_cart_alert(text)
 
 
 @when('Click on Cart button on the pop-up screen')
 def click_on_cart_btn_pop_up(context):
-    context.driver.find_element(*CART_BTN_POP_UP_SCREEN).click()
+    context.app.product_page.click_on_cart_btn_pop_up()
+
+
+@then('Verify that there is one item in the cart')
+def verify_items_in_cart(context):
+    context.app.cart_page.verify_items_in_cart()
 
 
 @when('Click on Delete button under item in the cart')
 def click_delete_button_for_item(context):
-    context.driver.find_element(*DELETE_BTN_FOR_ITEM).click()
+    context.app.cart_page.click_delete_button_for_item()
 
 
 # Locators that are used for the steps that are in other .py files:

@@ -1,17 +1,19 @@
 from selenium.webdriver.common.by import By
+# should I remove import of By above, as we don't need this too?
 from behave import given, when, then
 
-CART = (By.ID, 'nav-cart')
-CART_TEXT = (By.CSS_SELECTOR, 'div.a-column.a-span8.a-span-last h2')
+# should I remove two lines below? we really don't need them anymore
+
+# CART = (By.ID, 'nav-cart')
+# CART_TEXT = (By.CSS_SELECTOR, 'div.a-column.a-span8.a-span-last h2')
 
 
 @when('Click on Cart icon')
 def click_on_cart_icon(context):
-    context.driver.find_element(*CART).click()
+    context.app.main_page.click_on_cart_icon()
 
 
 @then('Verify that Cart is Empty')
 def verify_cart_is_empty(context):
-    actual_result = context.driver.find_element(*CART_TEXT).text
-    expected_result = 'Your Amazon Cart is empty'
-    assert actual_result == expected_result, f'Expected {expected_result}, got {actual_result} instead'
+    context.app.cart_page.verify_cart_is_empty()
+

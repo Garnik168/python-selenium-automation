@@ -3,4 +3,4 @@ from behave import given, when, then
 
 @given('Open Amazon page')
 def open_amazon(context):
-    context.driver.get('https://www.amazon.com/')
+    context.app.main_page.open_main_page()
