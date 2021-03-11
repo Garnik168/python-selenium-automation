@@ -8,4 +8,4 @@ PRODUCT_RESULT = (By.XPATH, "//div[@data-component-type='s-search-result']//a[sp
 
 @when('Click on the first product')
 def click_first_product(context):
-    context.driver.find_element(*PRODUCT_RESULT).click()
+    context.app.search_results_page.click_first_product()

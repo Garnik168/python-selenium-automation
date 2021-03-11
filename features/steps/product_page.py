@@ -36,12 +36,13 @@ BUY_NOW_BTN = (By.ID, 'buy-now-button')       # This element appears before we c
 
 @when('Click on Add to Cart button (Lana\'s version)')
 def click_add_to_cart_lana(context):
-    # sleep(2)    # Hashed, I couldn't find one line solution, but I got the work around option, see below
-    context.driver.wait.until(EC.presence_of_element_located(BUY_NOW_BTN))       # This is my work around, but I'm
-    # pretty sure there are much better and more effective solutions, please share :)
-    e = context.driver.wait.until(EC.element_to_be_clickable(ADD_TO_CART_BTN))    # Extra practice
-    e.click()
-    # context.driver.find_element(*ADD_TO_CART_BTN).click()     # Or this line if you hash the 42 and 43 lines
+    context.app.product_page.click_add_to_cart_lana()
+    # # sleep(2)    # Hashed, I couldn't find one line solution, but I got the work around option, see below
+    # context.driver.wait.until(EC.presence_of_element_located(BUY_NOW_BTN))       # This is my work around, but I'm
+    # # pretty sure there are much better and more effective solutions, please share :)
+    # e = context.driver.wait.until(EC.element_to_be_clickable(ADD_TO_CART_BTN))    # Extra practice
+    # e.click()
+    # # context.driver.find_element(*ADD_TO_CART_BTN).click()     # Or this line if you hash the two lines above
 
 
 @when('Select item\'s size')
@@ -51,9 +52,9 @@ def select_size(context):
     # sleep(2)    # Had to add this, otherwise fails, can't wait to learn better way of doing so
     # Explicit wait is not required for this section, cuz the action has to be after this step
 
+
 @then('Verify cart has {expected_count} item')
 def verify_cart_count(context, expected_count):
-    cart_count = context.driver.find_element(*CART_COUNT).text
-    assert expected_count == cart_count, f' Expected {expected_count} items, but got {cart_count} items instead'
+    context.app.cart_page.verify_cart_count(expected_count)
 
 

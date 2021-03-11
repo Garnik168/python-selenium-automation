@@ -30,6 +30,6 @@ def verify_url_contains_query(context, query):
 
 @when('Search for {search_word}')
 def input_search(context, search_word):
-    context.driver.find_element(*SEARCH_FIELD).send_keys(search_word, Keys.ENTER)
+    context.app.main_page.input_query_and_hit_enter(search_word)
 
 

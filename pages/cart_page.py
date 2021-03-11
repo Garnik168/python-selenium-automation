@@ -6,6 +6,7 @@ class CartPage(Page):
     CART_TEXT = (By.CSS_SELECTOR, 'div.a-column.a-span8.a-span-last h2')
     CHECKOUT_CART_CONFIRMATION = (By.ID, 'sc-subtotal-label-buybox')
     DELETE_BTN_FOR_ITEM = (By.CSS_SELECTOR, "[data-action='delete'] .a-declarative")
+    CART_COUNT = (By.ID, 'nav-cart-count')
 
     def verify_cart_is_empty(self):
         actual_result = self.driver.find_element(*self.CART_TEXT).text
@@ -19,5 +20,8 @@ class CartPage(Page):
 
     def click_delete_button_for_item(self):
         self.wait_for_element_click(*self.DELETE_BTN_FOR_ITEM)
+
+    def verify_cart_count(self, expected_count):
+        self.verify_text(expected_count, *self.CART_COUNT)
 
 

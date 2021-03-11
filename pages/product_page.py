@@ -9,6 +9,7 @@ class ProductPage(Page):
     # ALERT = (By.CSS_SELECTOR, "#attachDisplayAddBaseAlert h4")
     ALERT = (By.CSS_SELECTOR, "#attach-added-to-cart-message h4")   # dif selector could fix the issue
     CART_BTN_POP_UP_SCREEN = (By.ID, 'attach-sidesheet-view-cart-button')
+    BUY_NOW_BTN = (By.ID, 'buy-now-button')
 
     def click_add_to_cart(self):
         self.wait_for_element_click(*self.ADD_TO_CART_BTN)
@@ -25,3 +26,7 @@ class ProductPage(Page):
 
     def click_on_cart_btn_pop_up(self):
         self.wait_for_element_click(*self.CART_BTN_POP_UP_SCREEN)
+
+    def click_add_to_cart_lana(self):
+        self.wait_no_click_clickable(*self.BUY_NOW_BTN)   # for some reason wait_for_element_appear doesn't work
+        self.click(*self.ADD_TO_CART_BTN)
