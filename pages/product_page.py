@@ -10,6 +10,8 @@ class ProductPage(Page):
     ALERT = (By.CSS_SELECTOR, "#attach-added-to-cart-message h4")   # dif selector could fix the issue
     CART_BTN_POP_UP_SCREEN = (By.ID, 'attach-sidesheet-view-cart-button')
     BUY_NOW_BTN = (By.ID, 'buy-now-button')
+    SIZE_SELECTION_BTN = (By.ID, 'dropdown_selected_size_name')
+    SIZE_OPTION_0 = (By.ID, 'size_name_0')
 
     def click_add_to_cart(self):
         self.wait_for_element_click(*self.ADD_TO_CART_BTN)
@@ -30,3 +32,9 @@ class ProductPage(Page):
     def click_add_to_cart_lana(self):
         self.wait_no_click_clickable(*self.BUY_NOW_BTN)   # for some reason wait_for_element_appear doesn't work
         self.click(*self.ADD_TO_CART_BTN)
+
+    def select_size(self):
+        self.driver.find_element(*self.SIZE_SELECTION_BTN).click()
+        self.driver.find_element(*self.SIZE_OPTION_0).click()
+
+

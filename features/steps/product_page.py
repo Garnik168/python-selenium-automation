@@ -47,10 +47,11 @@ def click_add_to_cart_lana(context):
 
 @when('Select item\'s size')
 def select_size(context):
-    context.driver.find_element(*SIZE_SELECTION_BTN).click()
-    context.driver.find_element(*SIZE_OPTION_0).click()
-    # sleep(2)    # Had to add this, otherwise fails, can't wait to learn better way of doing so
-    # Explicit wait is not required for this section, cuz the action has to be after this step
+    context.app.product_page.select_size()
+    # context.driver.find_element(*SIZE_SELECTION_BTN).click()
+    # context.driver.find_element(*SIZE_OPTION_0).click()
+    # # sleep(2)    # Had to add this, otherwise fails, can't wait to learn better way of doing so
+    # # Explicit wait is not required for this section, cuz the action has to be after this step
 
 
 @then('Verify cart has {expected_count} item')
