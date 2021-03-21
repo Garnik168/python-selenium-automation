@@ -42,7 +42,8 @@ class Page:
         self.wait.until(EC.invisibility_of_element(locator))
 
     def wait_for_element_appear(self, *locator):
-        self.wait.until(EC.invisibility_of_element_located(locator))
+        self.wait.until(EC.presence_of_element_located(locator))
+        # return self.wait.until(EC.presence_of_element_located(locator)) Why in your Base Page you use RETURN?
 
     def hit_enter_key(self, *locator):
         self.find_element(*locator).send_keys(Keys.ENTER)

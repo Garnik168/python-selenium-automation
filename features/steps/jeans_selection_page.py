@@ -8,7 +8,17 @@ COLOR_NAMES = (By.CSS_SELECTOR, '#variation_color_name .selection')
 
 @given('Open Amazon product {product_id} page')
 def open_amazon_product_page(context, product_id):
-    context.driver.get(f'https://www.amazon.com/gp/product/{product_id}/')
+    context.app.product_page.open_product_page(product_id)
+
+
+@when('Hover over Add to Cart button')
+def hover_add_to_cart_btn(context):
+    context.app.product_page.hover_add_to_cart_btn()
+
+
+@then('Verify size selection tooltip is shown')
+def verify_size_selection_tooltip(context):
+    context.app.product_page.verify_size_selection_tooltip()
 
 
 @then("Verify user's selected colors clicking through them")

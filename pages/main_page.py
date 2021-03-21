@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
 from pages.base_page import Page
 from selenium.webdriver.common.keys import Keys
 
@@ -8,6 +9,7 @@ class MainPage(Page):
     SEARCH_ICON = (By.ID, 'nav-search-submit-button')
     ORDERS_BTN = (By.XPATH, "//a[@id='nav-orders']//span[@class='nav-line-2']")
     CART = (By.ID, 'nav-cart')
+    SEARCH_DROPDOWN = (By.ID, 'searchDropdownBox')
 
     def open_main_page(self):
         self.open_url('https://www.amazon.com/')
@@ -17,6 +19,13 @@ class MainPage(Page):
 
     def click_amazon_search_icon(self):
         self.click(*self.SEARCH_ICON)
+
+    def select_department(self, alias: str):
+        # drop_down = (self.find_element(*self.SEARCH_DROPDOWN))     # or find element separately and add it to Select()
+        select = Select(self.find_element(*self.SEARCH_DROPDOWN))    # select = Select(drop_down)
+        select.select_by_value(f'search-alias={alias}')            # provide value from option tag (ChromeDev) look dwn
+        # from time import sleep          # f' for making it more dynamic or keep it as a string if it cannot be dynamic
+        # sleep(5)    # demo purposes
 
     def click_orders_button(self):
         self.click(*self.ORDERS_BTN)
